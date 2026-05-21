@@ -1,3 +1,290 @@
+@import url('https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ---------------- BASE ---------------- */
+
+@layer base {
+
+  :root {
+
+    --color-satin-white:#FAF9F6;
+
+    --color-pearl:#F4F3EF;
+
+    --color-glacier-blue:#70B5FF;
+
+    --color-electric-cyan:#00BFFF;
+
+    --color-soft-blue:#EAF5FF;
+
+  }
+
+  *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+  }
+
+  html{
+    scroll-behavior:smooth;
+  }
+
+  body{
+
+    background:var(--color-satin-white);
+
+    color:#1A1A1A;
+
+    overflow-x:hidden;
+
+    font-family:'Inter',sans-serif;
+    
+    letter-spacing:-0.01em;
+
+    -webkit-font-smoothing:antialiased;
+
+    text-rendering:optimizeLegibility;
+
+  }
+
+  h1,h2,h3,h4,.font-display{
+
+    font-family:'Clash Display',sans-serif;
+    letter-spacing:-0.035em;
+
+  }
+
+}
+
+/* ---------------- PREMIUM BACKGROUND ---------------- */
+
+@layer utilities {
+
+  .bg-mesh-gradient{
+
+    background:
+
+      radial-gradient(
+        circle at top left,
+        rgba(112,181,255,0.12),
+        transparent 42%
+      ),
+
+      radial-gradient(
+        circle at bottom right,
+        rgba(186,230,253,0.10),
+        transparent 42%
+      ),
+
+      linear-gradient(
+        to bottom,
+        #FAF9F6,
+        #FDFCF9
+      );
+
+    animation:meshMovement 24s ease infinite;
+
+  }
+
+}
+
+/* ---------------- GLASSMORPHISM ---------------- */
+
+@layer utilities {
+
+  .glass-panel{
+
+    background:rgba(255,255,255,0.60);
+
+    backdrop-filter:blur(24px) saturate(180%);
+
+    -webkit-backdrop-filter:blur(24px) saturate(180%);
+
+    border:1px solid rgba(255,255,255,0.75);
+
+    box-shadow:
+
+      0 12px 40px rgba(15,23,42,0.05),
+
+      inset 0 1px 0 rgba(255,255,255,0.8);
+
+  }
+
+  .glass-nav{
+    background:rgba(255,255,255,0.88);
+
+    backdrop-filter:blur(22px);
+
+    -webkit-backdrop-filter:blur(22px);
+
+    border-bottom:1px solid rgba(15,23,42,0.06);
+
+    box-shadow:
+      0 10px 35px rgba(15,23,42,0.05);
+
+}
+
+}
+
+/* ---------------- WORLD MAP SOFT FADE ---------------- */
+
+.world-map{
+
+  opacity:0.10;
+
+  filter:
+
+    grayscale(100%)
+
+    contrast(0.85)
+
+    brightness(1.08);
+
+}
+
+/* ---------------- AIRPLANE ROUTES ---------------- */
+
+.animate-flight-path{
+
+  opacity:0.42;
+
+  animation:flightFlow 16s linear infinite;
+
+  filter:drop-shadow(
+    0 0 4px rgba(96,165,250,0.18)
+  );
+
+}
+
+/* ---------------- BUTTON POLISH ---------------- */
+
+.button-glow{
+
+  transition:all .35s ease;
+
+}
+
+.button-glow:hover{
+
+  box-shadow:
+
+    0 12px 35px rgba(14,165,233,0.12);
+
+}
+
+/* ---------------- SOFT FLOATING MICRO MOTION ---------------- */
+
+.float-soft{
+
+  animation:floatSoft 6s ease-in-out infinite;
+
+}
+.hero-glow{
+
+  text-shadow:
+
+    0 0 18px rgba(56,189,248,0.12);
+
+}
+
+/* ---------------- SCROLLBAR ---------------- */
+
+::-webkit-scrollbar{
+
+  width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+  background:#F4F3EF;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+  background:#D6E9F8;
+
+  border-radius:999px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+  background:#BFDDF5;
+
+}
+
+/* ---------------- SELECTION ---------------- */
+
+::selection{
+
+  background:#111827;
+
+  color:white;
+
+}
+
+/* ---------------- KEYFRAMES ---------------- */
+
+@keyframes meshMovement {
+
+  0%{
+
+    background-position:0% 50%;
+
+  }
+
+  50%{
+
+    background-position:100% 50%;
+
+  }
+
+  100%{
+
+    background-position:0% 50%;
+
+  }
+
+}
+
+@keyframes flightFlow {
+
+  0%{
+
+    stroke-dashoffset:1000;
+
+  }
+
+  100%{
+
+    stroke-dashoffset:0;
+
+  }
+
+}
+
+@keyframes floatSoft {
+
+  0%{
+
+    transform:translateY(0px);
+
+  }
+
+  50%{
+
+    transform:translateY(-8px);
+
+  }
+
+  100%{
+
+    transform:translateY(0px);
+
+  }
+
+}
