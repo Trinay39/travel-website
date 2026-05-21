@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function FinalCTA() {
 
   return (
@@ -65,52 +67,71 @@ export default function FinalCTA() {
 
         </p>
 
-        <div className="flex flex-col sm:flex-row justify-center gap-6">
+        <div className="flex flex-wrap justify-center gap-6 mt-10">
 
-          <button className="
+          {/* GENERATE */}
 
-          px-10
-          py-5
+          <Link
+            to="/login"
+            state={{ redirectTo:"/planner" }}
+          >
 
-          rounded-full
+            <button className="
 
-          bg-white
-          text-neutral-900
+            px-10
+            py-4
 
-          font-semibold
+            rounded-full
 
-          hover:scale-105
+            bg-black
+            text-white
 
-          transition
+            shadow-xl
 
-          ">
+            hover:scale-105
 
-            Generate My Trip →
+            transition-all
 
-          </button>
+            ">
 
-          <button className="
+              Generate My Trip →
 
-          px-10
-          py-5
+            </button>
 
-          rounded-full
+          </Link>
 
-          border
-          border-white/40
+          {/* EXPLORE */}
 
-          bg-white/10
-          backdrop-blur-xl
+          <Link
+            to="/login"
+            state={{ redirectTo:"/packages" }}
+          >
 
-          hover:bg-white/20
+            <button className="
 
-          transition
+            px-10
+            py-4
 
-          ">
+            rounded-full
 
-            Explore Packages
+            border
+            border-white/30
 
-          </button>
+            bg-white
+            text-black
+
+            hover:shadow-lg
+            hover:-translate-y-[2px]
+
+            transition-all
+
+            ">
+
+              Explore Packages
+
+            </button>
+
+          </Link>
 
         </div>
 
