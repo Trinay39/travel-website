@@ -1,165 +1,243 @@
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { Globe, User } from "lucide-react";
 
 export default function Navbar() {
 
-  return (
+const location = useLocation();
 
-    <motion.nav
+const navItems = [
 
-      initial={{
-        opacity:0,
-        y:-25
-      }}
+{
+name:"Home",
+path:"/"
+},
 
-      animate={{
-        opacity:1,
-        y:0
-      }}
+{
+name:"Packages",
+path:"/packages"
+},
 
-      transition={{
-        duration:0.8
-      }}
+{
+name:"Plan My Trip",
+path:"/planner"
+},
 
-      className="
+{
+name:"My Dashboard",
+path:"/dashboard"
+}
 
-      sticky
-      top-0
+];
 
-      z-50
+return(
 
-      backdrop-blur-xl
-      bg-white/70
+<nav className="
 
-      border-b
-      border-neutral-200/50
+sticky
+top-0
 
-      "
+z-50
 
-    >
+bg-white/95
 
-      <div className="
+backdrop-blur-md
 
-      max-w-7xl
-      mx-auto
+border-b
 
-      px-6
-      py-5
+border-neutral-100
 
-      flex
-      justify-between
-      items-center
+">
 
-      ">
+<div className="
 
-        {/* LEFT */}
+max-w-7xl
 
-        <Link to="/">
+mx-auto
 
-          <div className="flex items-center gap-4 cursor-pointer">
+flex
 
-            <div className="
+items-center
 
-            w-10
-            h-10
+justify-between
 
-            rounded-full
+px-8
+py-5
 
-            bg-gradient-to-r
-            from-sky-500
-            to-purple-500
+">
 
-            " />
+{/* LOGO */}
 
-            <h1 className="
+<Link to="/planner">
 
-            text-3xl
-            font-black
+<div className="flex items-center gap-3">
 
-            bg-gradient-to-r
-            from-sky-600
-            to-purple-500
+<div className="
 
-            bg-clip-text
-            text-transparent
+w-10
+h-10
 
-            ">
+rounded-full
 
-              VoyageAI
+bg-gradient-to-r
 
-            </h1>
+from-blue-500
 
-          </div>
+to-purple-500
 
-        </Link>
+"
 
-        {/* RIGHT */}
+>
 
-        <div className="flex items-center gap-5">
+</div>
 
-          {/* SIGN IN */}
+<h1 className="
 
-          <Link to="/login">
+text-[28px]
 
-            <button className="
+font-bold
 
-            px-6
-            py-3
+bg-gradient-to-r
 
-            rounded-full
+from-blue-600
 
-            border
-            border-neutral-300
+to-purple-500
 
-            bg-white/70
+bg-clip-text
 
-            hover:shadow-lg
-            hover:-translate-y-[2px]
+text-transparent
 
-            transition-all
+tracking-tight
 
-            ">
+">
 
-              Sign In
+VoyageAI
 
-            </button>
+</h1>
 
-          </Link>
+</div>
 
-          {/* SIGN UP */}
+</Link>
 
-          <Link to="/signup">
+{/* NAV */}
 
-            <button className="
+<div className="
 
-            px-7
-            py-3
+hidden
+md:flex
 
-            rounded-full
+items-center
 
-            bg-black
-            text-white
+gap-12
 
-            shadow-lg
+text-[17px]
 
-            hover:scale-105
+font-medium
 
-            transition-all
+text-neutral-600
 
-            ">
+">
 
-              Sign Up
+{
 
-            </button>
+navItems.map((item)=>(
 
-          </Link>
+<Link
 
-        </div>
+key={item.name}
 
-      </div>
+to={item.path}
 
-    </motion.nav>
+className={`
 
-  );
+transition
+
+${
+
+location.pathname===item.path
+
+?
+
+"text-purple-600"
+
+:
+
+"hover:text-purple-500"
+
+}
+
+`}
+
+>
+
+{item.name}
+
+</Link>
+
+))
+
+}
+
+</div>
+
+{/* RIGHT */}
+
+<div className="flex items-center gap-5">
+
+<button className="
+
+flex
+
+items-center
+
+gap-2
+
+text-neutral-600
+
+"
+
+>
+
+<Globe size={18}/>
+
+₹ INR
+
+</button>
+
+<button className="
+
+w-10
+h-10
+
+rounded-full
+
+bg-gradient-to-r
+
+from-blue-500
+
+to-purple-500
+
+text-white
+
+flex
+
+items-center
+
+justify-center
+
+"
+
+>
+
+<User size={18}/>
+
+</button>
+
+</div>
+
+</div>
+
+</nav>
+
+)
 
 }
