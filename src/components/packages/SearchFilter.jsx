@@ -2,60 +2,59 @@ export default function SearchFilter(){
 
 return(
 
-<section className="pb-14">
+<section className="mb-10">
 
 <div className="
-
-max-w-5xl
-
-mx-auto
 
 bg-white
 
 border
 border-neutral-200
 
-shadow-xl
+shadow-sm
 
-rounded-full
+rounded-[22px]
 
-p-4
+p-3
 
 flex
-gap-4
+flex-col
+md:flex-row
+gap-3
 
 ">
 
 <input
-
 placeholder="Search destinations, experiences, packages..."
-
 className="
 
 flex-1
 
-px-8
+px-5
 py-4
 
 outline-none
 
-text-lg
+text-base
+
+rounded-2xl
 
 "
-
 />
 
 <button className="
 
-px-10
+px-8
 py-4
 
-rounded-full
+rounded-2xl
 
 bg-black
 text-white
 
-hover:scale-105
+font-semibold
+
+hover:scale-[1.02]
 
 transition-all
 

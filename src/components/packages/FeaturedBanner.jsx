@@ -1,6 +1,20 @@
+import { useNavigate } from "react-router-dom";
 import hero from "../../assets/hero.png";
 
 export default function FeaturedBanner(){
+
+const navigate=useNavigate();
+
+function requireSignIn(){
+
+if(localStorage.getItem("voyageaiSignedIn")!=="true"){
+navigate("/login",{state:{redirectTo:"/packages"}});
+return;
+}
+
+alert("Package details are ready for signed-in users.");
+
+}
 
 return(
 
@@ -8,23 +22,19 @@ return(
 
 relative
 
-mx-12
-lg:mx-20
-
-h-[88vh]
+h-[560px]
 
 overflow-hidden
 
-rounded-[44px]
+rounded-[28px]
 
-mb-20
+mb-12
 
 ">
 
 <img
-
 src={hero}
-
+alt="Bali beach destination"
 className="
 
 absolute
@@ -35,7 +45,6 @@ h-full
 object-cover
 
 "
-
 />
 
 <div className="
@@ -45,9 +54,9 @@ inset-0
 
 bg-gradient-to-r
 
-from-black/95
-via-black/60
-to-transparent
+from-black/90
+via-black/55
+to-black/10
 
 "/>
 
@@ -55,14 +64,14 @@ to-transparent
 
 absolute
 
-left-16
-lg:left-20
+left-8
+md:left-12
 
-bottom-28
+bottom-12
 
 text-white
 
-max-w-4xl
+max-w-2xl
 
 ">
 
@@ -70,11 +79,11 @@ max-w-4xl
 
 uppercase
 
-tracking-[0.35em]
+tracking-[0.25em]
 
-text-sky-400
+text-sky-300
 
-mb-6
+mb-4
 
 ">
 
@@ -84,13 +93,14 @@ FEATURED DESTINATION
 
 <h1 className="
 
-text-[8rem]
+text-5xl
+md:text-7xl
 
 font-black
 
 leading-none
 
-mb-8
+mb-6
 
 ">
 
@@ -100,34 +110,30 @@ Bali Escape
 
 <p className="
 
-text-3xl
+text-xl
+md:text-2xl
 
 leading-relaxed
 
 text-white/90
 
-mb-12
+mb-8
 
 ">
 
-Luxury beach retreat.
-
-Private villas.
-
-Cultural immersion.
-
-Unforgettable sunsets.
-
-Tailored experiences.
+Luxury beach retreat with private villas, cultural immersion,
+unforgettable sunsets, and tailored experiences.
 
 </p>
 
-<div className="flex gap-6">
+<div className="flex flex-col sm:flex-row gap-4">
 
-<button className="
+<button
+onClick={requireSignIn}
+className="
 
-px-12
-py-5
+px-8
+py-4
 
 rounded-full
 
@@ -135,8 +141,6 @@ bg-white
 text-black
 
 font-bold
-
-text-lg
 
 hover:scale-105
 
@@ -148,10 +152,12 @@ Explore Package
 
 </button>
 
-<button className="
+<button
+onClick={requireSignIn}
+className="
 
-px-12
-py-5
+px-8
+py-4
 
 rounded-full
 
@@ -162,7 +168,7 @@ backdrop-blur-lg
 border
 border-white/20
 
-text-lg
+font-semibold
 
 hover:bg-white/20
 
@@ -170,7 +176,7 @@ transition-all
 
 ">
 
-＋ Wishlist
++ Wishlist
 
 </button>
 
