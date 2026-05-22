@@ -1,7 +1,10 @@
 import { useState } from "react";
-import { Sparkles, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function Planner() {
+
+const navigate=useNavigate();
 
 const interestsOptions=[
 "Adventure",
@@ -104,11 +107,21 @@ item
 
 function generateTrip(){
 
+if(localStorage.getItem("voyageaiSignedIn")!=="true"){
+
+navigate("/login",{
+state:{redirectTo:"/planner"}
+});
+
+return;
+
+}
+
 console.log(tripData);
 
 alert(
 
-"AI itinerary generation backend coming next 🚀"
+"Your itinerary preferences are ready. AI generation backend is coming next."
 
 );
 
@@ -145,34 +158,6 @@ mx-auto
 {/* HEADER */}
 
 <div className="text-center mb-10">
-
-<div className="
-
-inline-flex
-
-items-center
-
-gap-2
-
-bg-purple-100
-
-text-purple-700
-
-px-4
-
-py-2
-
-rounded-full
-
-mb-5
-
-">
-
-<Sparkles size={16}/>
-
-AI Powered
-
-</div>
 
 <h1 className="
 

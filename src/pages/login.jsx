@@ -17,6 +17,11 @@ export default function Login() {
   const redirectTo =
     location.state?.redirectTo || "/";
 
+  function handleSignIn() {
+    localStorage.setItem("voyageaiSignedIn", "true");
+    navigate(redirectTo);
+  }
+
   return (
 
     <div className="
@@ -392,7 +397,7 @@ export default function Login() {
 
             <button
 
-              onClick={()=>navigate(redirectTo)}
+              onClick={handleSignIn}
 
               className="
 

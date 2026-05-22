@@ -7,6 +7,7 @@ import Login from "./pages/login";
 import Signup from "./pages/signup";
 
 import Planner from "./pages/planner";
+import Packages from "./pages/packages";
 
 function App(){
 
@@ -19,6 +20,7 @@ return(
 <Route path="/login" element={<Login/>} />
 
 <Route path="/signup" element={<Signup/>} />
+<Route path="/packages" element={<Packages/>} />
 
 <Route element={<MainLayout/>}>
 

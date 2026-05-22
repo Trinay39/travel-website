@@ -1,7 +1,7 @@
 import Navbar from "../components/common/Navbar";
-
 import FeaturedBanner from "../components/packages/FeaturedBanner";
 import PackageRow from "../components/packages/PackageRow";
+import SearchFilter from "../components/packages/SearchFilter";
 
 export default function Packages(){
 
@@ -17,21 +17,26 @@ min-h-screen
 
 <Navbar />
 
-<main>
+<main className="
+
+max-w-7xl
+mx-auto
+
+px-6
+py-10
+pb-24
+
+">
 
 <FeaturedBanner />
 
-<div className="pb-24">
+<SearchFilter />
 
 <PackageRow title="Recommended For You" />
 
 <PackageRow title="Adventure Escapes" />
 
 <PackageRow title="Luxury Packages" />
-
-<PackageRow title="Budget Trips" />
-
-</div>
 
 </main>
 

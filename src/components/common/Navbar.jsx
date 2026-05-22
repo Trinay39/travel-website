@@ -3,16 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 
 export default function Navbar() {
 
-  const location = useLocation();
-
-  const loggedInPages = [
-    "/packages",
-    "/planner",
-    "/dashboard"
-  ];
-
-  const isLoggedInPage = loggedInPages.includes(location.pathname);
-
   return (
 
     <motion.nav
@@ -111,6 +101,42 @@ py-5
         {/* RIGHT */}
 
         <div className="flex items-center gap-5">
+
+          <Link
+            to="/planner"
+            className="
+
+            font-semibold
+            text-neutral-700
+
+            hover:text-sky-600
+
+            transition-colors
+
+            "
+          >
+
+            Planner
+
+          </Link>
+
+          <Link
+            to="/packages"
+            className="
+
+            font-semibold
+            text-neutral-700
+
+            hover:text-sky-600
+
+            transition-colors
+
+            "
+          >
+
+            Packages
+
+          </Link>
 
           {/* SIGN IN */}
 

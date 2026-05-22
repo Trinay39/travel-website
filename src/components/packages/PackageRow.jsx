@@ -1,30 +1,77 @@
+import { useNavigate } from "react-router-dom";
 import hero from "../../assets/hero.png";
+
+const packages=[
+{
+id:1,
+title:"Swiss Alps",
+meta:"8 Days / Luxury Adventure",
+price:"1,80,000",
+rating:"4.9"
+},
+{
+id:2,
+title:"Goa Coast",
+meta:"4 Days / Beach Escape",
+price:"42,000",
+rating:"4.7"
+},
+{
+id:3,
+title:"Kerala Retreat",
+meta:"6 Days / Nature and Wellness",
+price:"68,000",
+rating:"4.8"
+},
+{
+id:4,
+title:"Dubai Lights",
+meta:"5 Days / City Luxury",
+price:"1,25,000",
+rating:"4.8"
+}
+];
 
 export default function PackageRow({title}){
 
-const packages=[1,2,3,4,5,6];
+const navigate=useNavigate();
+
+function requireSignIn(){
+
+if(localStorage.getItem("voyageaiSignedIn")!=="true"){
+navigate("/login",{state:{redirectTo:"/packages"}});
+return;
+}
+
+alert("Package interaction backend is coming next.");
+
+}
 
 return(
 
-<section className="mb-20">
+<section className="mb-16">
 
 <div className="
 
 flex
 justify-between
-items-center
+items-end
+gap-4
 
-px-10
-
-mb-8
+mb-6
 
 ">
 
+<div>
+
 <h2 className="
 
-text-5xl
+text-3xl
+md:text-4xl
 
 font-black
+
+text-neutral-950
 
 ">
 
@@ -32,17 +79,23 @@ font-black
 
 </h2>
 
-<button className="
+</div>
+
+<button
+onClick={requireSignIn}
+className="
 
 text-sky-600
 
 font-semibold
 
-text-lg
+hover:text-sky-800
+
+transition-colors
 
 ">
 
-View All →
+View All {"->"}
 
 </button>
 
@@ -50,88 +103,83 @@ View All →
 
 <div className="
 
-flex
+grid
+sm:grid-cols-2
+xl:grid-cols-4
 
-gap-8
-
-overflow-x-auto
-
-px-10
-
-pb-6
-
-scroll-smooth
+gap-6
 
 ">
 
 {packages.map((item)=>(
 
-<div
-
-key={item}
-
+<button
+key={`${title}-${item.id}`}
+type="button"
+onClick={requireSignIn}
 className="
 
-min-w-[420px]
+group
+
+text-left
 
 bg-white
 
-rounded-[32px]
+rounded-[24px]
 
 overflow-hidden
 
-shadow-lg
+border
+border-neutral-200
 
-hover:scale-[1.04]
+shadow-sm
 
-hover:shadow-2xl
+hover:-translate-y-1
+hover:shadow-xl
 
 transition-all
 
-duration-300
-
-cursor-pointer
-
 "
-
 >
 
 <img
-
 src={hero}
-
+alt={item.title}
 className="
 
 w-full
 
-h-[320px]
+h-56
 
 object-cover
 
 "
-
 />
 
-<div className="p-8">
+<div className="p-6">
 
 <div className="
 
 flex
 justify-between
+items-start
+gap-4
 
-mb-4
+mb-3
 
 ">
 
 <h3 className="
 
-text-4xl
+text-2xl
 
 font-black
 
+text-neutral-950
+
 ">
 
-Swiss Alps
+{item.title}
 
 </h3>
 
@@ -141,11 +189,9 @@ text-yellow-500
 
 font-bold
 
-text-xl
-
 ">
 
-★4.9
+* {item.rating}
 
 </span>
 
@@ -155,33 +201,54 @@ text-xl
 
 text-neutral-500
 
-text-lg
-
 mb-5
 
 ">
 
-8 Days • Luxury Adventure
+{item.meta}
 
 </p>
+
+<div className="
+
+flex
+justify-between
+items-center
+
+">
 
 <p className="
 
 text-sky-600
 
 font-black
-
-text-3xl
+text-2xl
 
 ">
 
-₹1,80,000
+Rs. {item.price}
 
 </p>
 
+<span className="
+
+text-sm
+font-semibold
+text-neutral-500
+
+group-hover:text-sky-600
+
+">
+
+Explore
+
+</span>
+
 </div>
 
 </div>
+
+</button>
 
 ))}
 
