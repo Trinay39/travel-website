@@ -1,24 +1,42 @@
-export default function Packages() {
+import Navbar from "../components/common/Navbar";
 
-  return (
+import FeaturedBanner from "../components/packages/FeaturedBanner";
+import PackageRow from "../components/packages/PackageRow";
 
-    <div className="
+export default function Packages(){
 
-    min-h-screen
+return(
 
-    flex
-    items-center
-    justify-center
+<div className="
 
-    text-5xl
-    font-black
+bg-[#fafafa]
 
-    ">
+min-h-screen
 
-      Packages Page
+">
 
-    </div>
+<Navbar />
 
-  );
+<main>
+
+<FeaturedBanner />
+
+<div className="pb-24">
+
+<PackageRow title="Recommended For You" />
+
+<PackageRow title="Adventure Escapes" />
+
+<PackageRow title="Luxury Packages" />
+
+<PackageRow title="Budget Trips" />
+
+</div>
+
+</main>
+
+</div>
+
+);
 
 }

@@ -1,49 +1,42 @@
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Navbar() {
 
+  const location = useLocation();
+
+  const loggedInPages = [
+    "/packages",
+    "/planner",
+    "/dashboard"
+  ];
+
+  const isLoggedInPage = loggedInPages.includes(location.pathname);
+
   return (
 
-    <motion.nav
+    <nav className="
 
-      initial={{
-        opacity:0,
-        y:-25
-      }}
+    w-full
 
-      animate={{
-        opacity:1,
-        y:0
-      }}
+    border-b
+    border-neutral-200
 
-      transition={{
-        duration:0.8
-      }}
+    bg-white/90
+    backdrop-blur-lg
 
-      className="
+    sticky
+    top-0
+    z-50
 
-      sticky
-      top-0
-
-      z-50
-
-      backdrop-blur-xl
-      bg-white/70
-
-      border-b
-      border-neutral-200/50
-
-      "
-
-    >
+    ">
 
       <div className="
 
-      max-w-7xl
-      mx-auto
+      w-full
 
-      px-6
+      px-10
+      lg:px-20
+
       py-5
 
       flex
@@ -52,16 +45,60 @@ export default function Navbar() {
 
       ">
 
-        {/* LEFT */}
+        {/* LEFT SIDE */}
 
-        <Link to="/">
+        <Link
+          to="/"
+          className="flex items-center gap-3"
+        >
 
-          <div className="flex items-center gap-4 cursor-pointer">
+          <div className="
+
+          w-10
+          h-10
+
+          rounded-full
+
+          bg-gradient-to-r
+          from-sky-500
+          to-purple-500
+
+          " />
+
+          <h1 className="
+
+          text-4xl
+
+          font-black
+
+          bg-gradient-to-r
+          from-sky-500
+          to-purple-500
+
+          bg-clip-text
+          text-transparent
+
+          ">
+
+            VoyageAI
+
+          </h1>
+
+        </Link>
+
+        {/* RIGHT SIDE */}
+
+        {isLoggedInPage ? (
+
+          <Link
+            to="/dashboard"
+            className="flex items-center gap-4"
+          >
 
             <div className="
 
-            w-10
-            h-10
+            w-12
+            h-12
 
             rounded-full
 
@@ -69,96 +106,103 @@ export default function Navbar() {
             from-sky-500
             to-purple-500
 
-            " />
+            flex
+            items-center
+            justify-center
 
-            <h1 className="
-
-            text-3xl
-            font-black
-
-            bg-gradient-to-r
-            from-sky-600
-            to-purple-500
-
-            bg-clip-text
-            text-transparent
+            text-white
+            font-bold
 
             ">
 
-              VoyageAI
+              N
 
-            </h1>
+            </div>
+
+            <div>
+
+              <p className="font-semibold">
+
+                Nishaanth
+
+              </p>
+
+              <p className="
+
+              text-sky-500
+              text-sm
+
+              ">
+
+                Open Dashboard
+
+              </p>
+
+            </div>
+
+          </Link>
+
+        ) : (
+
+          <div className="flex gap-5">
+
+            <Link to="/login">
+
+              <button className="
+
+              px-8
+              py-3
+
+              rounded-full
+
+              border
+              border-neutral-300
+
+              hover:bg-neutral-100
+
+              transition-all
+
+              ">
+
+                Sign In
+
+              </button>
+
+            </Link>
+
+            <Link to="/signup">
+
+              <button className="
+
+              px-8
+              py-3
+
+              rounded-full
+
+              bg-black
+              text-white
+
+              shadow-lg
+
+              hover:scale-105
+
+              transition-all
+
+              ">
+
+                Sign Up
+
+              </button>
+
+            </Link>
 
           </div>
 
-        </Link>
-
-        {/* RIGHT */}
-
-        <div className="flex items-center gap-5">
-
-          {/* SIGN IN */}
-
-          <Link to="/login">
-
-            <button className="
-
-            px-6
-            py-3
-
-            rounded-full
-
-            border
-            border-neutral-300
-
-            bg-white/70
-
-            hover:shadow-lg
-            hover:-translate-y-[2px]
-
-            transition-all
-
-            ">
-
-              Sign In
-
-            </button>
-
-          </Link>
-
-          {/* SIGN UP */}
-
-          <Link to="/signup">
-
-            <button className="
-
-            px-7
-            py-3
-
-            rounded-full
-
-            bg-black
-            text-white
-
-            shadow-lg
-
-            hover:scale-105
-
-            transition-all
-
-            ">
-
-              Sign Up
-
-            </button>
-
-          </Link>
-
-        </div>
+        )}
 
       </div>
 
-    </motion.nav>
+    </nav>
 
   );
 
